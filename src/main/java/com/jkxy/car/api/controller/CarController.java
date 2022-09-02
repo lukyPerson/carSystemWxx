@@ -81,7 +81,7 @@ public class CarController {
      * @return
      */
     @PostMapping("insertCar")
-    public JSONResult insertCar(Car car) {
+    public JSONResult insertCar(@RequestBody Car car) {
         carService.insertCar(car);
         return JSONResult.ok();
     }
