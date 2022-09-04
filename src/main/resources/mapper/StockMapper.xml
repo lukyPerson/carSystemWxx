@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jkxy.car.api.dao.StockMapper">
+
+    <!--    <resultMap id="BaseResultMap" type="com.jkxy.car.api.pojo.Stock">-->
+    <!--        <result column="phone" property="userId"/>-->
+    <!--    </resultMap>-->
+    <select id="getStockByModelId" resultType="com.jkxy.car.api.pojo.Stock">
+        select *
+        from STOCK
+        where modelId = ${id};
+    </select>
+
+    <update id="updateStock" parameterType="com.jkxy.car.api.pojo.Stock">
+        update STOCK
+        set modelId  = #{modelId},
+            stockNum = #{stockNum},
+            updateTs = #{updateTs}
+        where id =
+              #{id}
+    </update>
+</mapper>

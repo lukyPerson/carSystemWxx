@@ -1,11 +1,14 @@
 package com.jkxy.car.api.controller;
 
+import com.jkxy.car.api.VO.FindAllReqHeaderVO;
+import com.jkxy.car.api.common.annotation.LogAuth;
 import com.jkxy.car.api.pojo.Car;
 import com.jkxy.car.api.service.CarService;
 import com.jkxy.car.api.utils.JSONResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 
@@ -17,13 +20,15 @@ public class CarController {
     @Autowired
     private CarService carService;
 
+
     /**
      * 查询所有
      *
      * @return
      */
+//    @LogAuth
     @GetMapping("findAll")
-    public JSONResult findAll() {
+    public JSONResult findAll(@RequestBody @Valid FindAllReqHeaderVO req) {
         List<Car> cars = carService.findAll();
         return JSONResult.ok(cars);
     }
