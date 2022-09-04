@@ -9,6 +9,8 @@ public interface CarService {
 
     List<Car> findAll();
 
+    List<Car> findByKeyWord(String key,String pageSize,String currentPage);
+
     Car findById(int id);
 
     List<Car> findByCarName(String carName);
