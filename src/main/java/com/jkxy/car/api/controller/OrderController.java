@@ -24,6 +24,7 @@ public class OrderController {
     public JSONResult getOrderByUserId(@RequestParam String userId){
         return JSONResult.ok(orderService.getOrderByUserId(userId));
     }
+//    下订单
     @PostMapping("/buyCar")
     public JSONResult buyCar(@RequestBody BuyCarReqVO reqVO){
         if (stockService.updateStock(reqVO.getModelId(), -1) == 1) {
