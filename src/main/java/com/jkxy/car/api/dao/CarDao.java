@@ -11,6 +11,8 @@ public interface CarDao {
     @Select("select * from carMessage")
     List<Car> findAll();
 
+    List<Car> findByKey(@Param("keyWord") String key);
+
     @Select("select * from carMessage where id = #{id}")
     Car findById(int id);
 

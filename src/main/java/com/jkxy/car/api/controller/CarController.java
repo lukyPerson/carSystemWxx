@@ -1,7 +1,7 @@
 package com.jkxy.car.api.controller;
 
 import com.jkxy.car.api.VO.FindAllReqHeaderVO;
-import com.jkxy.car.api.common.annotation.LogAuth;
+import com.jkxy.car.api.VO.FindByKeyWordReqVO;
 import com.jkxy.car.api.pojo.Car;
 import com.jkxy.car.api.service.CarService;
 import com.jkxy.car.api.utils.JSONResult;
@@ -21,6 +21,16 @@ public class CarController {
     private CarService carService;
 
 
+    /**
+     * 模糊查询并分页展示
+     *
+     * @return
+     */
+    @GetMapping("findByKeyWord")
+    public JSONResult findByKeyWord(@RequestParam String key,@RequestParam(required = false) String pageSize,@RequestParam(required = false) String currentPage) {
+        List<Car> cars = carService.findByKeyWord(key,pageSize,currentPage);
+        return JSONResult.ok(cars);
+    }
     /**
      * 查询所有
      *
