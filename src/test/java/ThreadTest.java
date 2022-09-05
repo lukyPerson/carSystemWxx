@@ -40,7 +40,7 @@ public class ThreadTest {
         countDownLatch.await();
     }
     public void print(String a,String b) throws InterruptedException {
-        synchronized (a){
+        synchronized (a.intern()){
             System.out.printf("这个方法被调用了：%s,调用者：%s\n",a,b);
             Thread.sleep(2000);
         }

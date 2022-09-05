@@ -29,12 +29,12 @@ public class StockServiceImpl implements StockService {
 
     @Override
     public Integer updateStock(String modelId,int opNum) {
-        Stock stock = getStockByModelId(modelId);
-        if (stock == null){
-            throw new RuntimeException("车系库存不存在");
-        }
         Integer a = 0;
         synchronized (stringPool.intern(modelId)) {
+            Stock stock = getStockByModelId(modelId);
+            if (stock == null){
+                throw new RuntimeException("车系库存不存在");
+            }
             if (opNum < 0 && Integer.valueOf(stock.getStockNum()) <= 0) {
                 throw new RuntimeException("库存不足");
             }
