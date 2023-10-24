@@ -37,8 +37,9 @@ public class CarController {
      * @return
      */
 //    @LogAuth
+    @CrossOrigin
     @GetMapping("findAll")
-    public JSONResult findAll(@RequestBody @Valid FindAllReqHeaderVO req) {
+    public JSONResult findAll() {
         List<Car> cars = carService.findAll();
         return JSONResult.ok(cars);
     }
